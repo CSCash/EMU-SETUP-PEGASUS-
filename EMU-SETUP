@@ -43,7 +43,7 @@ setup_pegasus() {
 select_user_config() {
     echo -e "${BLUE}---------------------------------${NC}"
     echo -e "${GREEN}  1. ARMv7${NC}"
-    echo -e "${GREEN}  2. not done jet no idee wel it works${NC}"
+    echo -e "${GREEN}  2. not done yet, no idea how well it works${NC}"
     echo -e "${BLUE}---------------------------------${NC}"
     read -p "Select an option: " config_choice
 
@@ -53,9 +53,9 @@ select_user_config() {
                 cd "$HOME/.skyscraper"
                 echo -e "${YELLOW}[•] Removing old config.ini...${NC}"
                 rm -fr config.ini
-                echo -e "${YELLOW}[•] Downloading new config.ini...${NC}"
-                wget https://github.com/CSCash/EMU-SETUP-PEGASUS-/releases/download/config.ini/config.ini
-                echo -e "${GREEN}[✓] Config updated successfully!${NC}"
+                echo -e "${YELLOW}[•] Downloading new config.ini silently in the background...${NC}"
+                wget -q -O config.ini https://github.com/CSCash/EMU-SETUP-PEGASUS-/releases/download/config.ini/config.ini &
+                echo -e "${GREEN}[✓] Config update started in the background!${NC}"
             else
                 echo -e "${RED}[✗] Folder .skyscraper not found! Run Setup first.${NC}"
             fi
